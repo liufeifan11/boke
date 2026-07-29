@@ -1,0 +1,19 @@
+{{ define "main" }}
+<article class="post-single">
+  <h1>{{ .Title }}</h1>
+  <div class="post-meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+    <span class="author">{{ .Params.author | default .Site.Params.author }}</span>
+    {{ with .Params.tags }}
+      <span class="tags">
+        {{ range . }}
+          <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+        {{ end }}
+      </span>
+    {{ end }}
+  </div>
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}
