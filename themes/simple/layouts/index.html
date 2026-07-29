@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section class="home">
+  <div class="hero">
+    <h1>{{ .Site.Title }}</h1>
+    <p class="description">{{ .Site.Params.description }}</p>
+  </div>
+  <section class="recent-posts">
+    <h2>最新文章</h2>
+    {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
+    <article class="post-item">
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <div class="post-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        {{ with .Params.tags }}
+          <span class="tags">
+            {{ range . }}
+              <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+            {{ end }}
+          </span>
+        {{ end }}
+      </div>
+      <p>{{ .Summary | plainify | truncate 150 }}</p>
+    </article>
+    {{ end }}
+  </section>
+</section>
+{{ end }}
