@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="posts-list">
+  <h1>文章</h1>
+  {{ range .Pages }}
+  <article class="post-item">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{ with .Params.tags }}
+        <span class="tags">
+          {{ range . }}
+            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+          {{ end }}
+        </span>
+      {{ end }}
+    </div>
+    <p class="post-summary">{{ .Summary | plainify | truncate 200 }}</p>
+  </article>
+  {{ end }}
+</section>
+{{ end }}
