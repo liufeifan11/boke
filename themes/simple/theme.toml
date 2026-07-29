@@ -1,9 +1,0 @@
-[theme]
-name = "simple"
-license = "MIT"
-description = "A clean, minimal blog theme for 赋凡的博客"
-homepage = "https://github.com/liufeifan11/boke"
-min_version = "0.110.0"
-
-[author]
-name = "赋凡"
