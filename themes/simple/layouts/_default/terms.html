@@ -1,0 +1,12 @@
+{{ define "main" }}
+<section class="tags-page">
+  <h1>标签</h1>
+  <div class="tags-cloud">
+    {{ range .Pages }}
+      <a href="{{ .RelPermalink }}" class="tag" style="font-size: {{ add 0.8 (mul (div (float .Pages.Len) 3) 0.4) }}rem">
+        #{{ .Title }} ({{ .Pages.Len }})
+      </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
